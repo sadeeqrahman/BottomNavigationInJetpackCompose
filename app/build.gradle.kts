@@ -68,5 +68,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("com.intuit.sdp:sdp-android:1.1.0")
-
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.5.4")
 }

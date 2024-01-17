@@ -27,7 +27,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.googlefonts.Font
+import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,12 +41,15 @@ import androidx.compose.ui.unit.sp
 import com.sadeeq.encoders.bottomnavigationinjetpackcompose.BadgeViewModel
 import com.sadeeq.encoders.bottomnavigationinjetpackcompose.R
 import com.sadeeq.encoders.bottomnavigationinjetpackcompose.ui.theme.BottomNavigationInJetpackComposeTheme
+import com.sadeeq.encoders.bottomnavigationinjetpackcompose.ui.theme.provider
 
 
 @Composable
 fun HomeScreen(badgeViewModel: BadgeViewModel) {
     val context = LocalContext.current
-    badgeViewModel.updateBadge("Home",14)
+    val fontName = GoogleFont("Romanesco")
+
+    badgeViewModel.updateBadge("Home", 14)
     Card(
         colors = CardDefaults.cardColors(
             colorResource(id = R.color.white)
@@ -73,10 +82,20 @@ fun HomeScreen(badgeViewModel: BadgeViewModel) {
             Column {
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
+
                     text = "Swat",
                     color = MaterialTheme.colorScheme.primary,
                     style = MaterialTheme.typography.titleMedium,
-                    fontSize = 20.sp
+                    fontSize = 20.sp,
+                    fontFamily = FontFamily(
+                        Font(
+                            googleFont = fontName,
+                            fontProvider = provider,
+                            weight = FontWeight.Bold,
+                            style = FontStyle.Normal
+                        )
+                    )
+
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
@@ -92,7 +111,6 @@ fun HomeScreen(badgeViewModel: BadgeViewModel) {
 
 
 }
-
 
 
 @Preview(showBackground = true)

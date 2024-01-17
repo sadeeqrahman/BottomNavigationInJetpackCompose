@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -20,6 +21,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
@@ -51,7 +56,9 @@ class MainActivity : ComponentActivity() {
 
             // creating our navController
             val navController = rememberNavController()
-
+            var visible by remember {
+                mutableStateOf(true)
+            }
             BottomNavigationInJetpackComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -61,10 +68,16 @@ class MainActivity : ComponentActivity() {
                     Scaffold(bottomBar = { TabView(tabBarItems, navController, badgeViewModel) }) {
                         NavHost(navController = navController, startDestination = homeTab.title) {
                             composable(homeTab.title) {
-                                HomeScreen(badgeViewModel = badgeViewModel)
+                                AnimatedVisibility(visible) {
+                                    HomeScreen(badgeViewModel = badgeViewModel)
+                                }
+
                             }
                             composable(alertsTab.title) {
-                                AlertsScreen(badgeViewModel)
+                                AnimatedVisibility(visible) {
+                                    AlertsScreen(badgeViewModel)
+                                }
+
                             }
                             composable(settingsTab.title) {
                                 SettingsScreen(badgeViewModel = badgeViewModel)
