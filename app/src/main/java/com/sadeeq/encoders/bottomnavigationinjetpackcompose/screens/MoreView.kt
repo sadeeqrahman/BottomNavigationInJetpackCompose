@@ -44,22 +44,24 @@ import com.sadeeq.encoders.bottomnavigationinjetpackcompose.ui.theme.BottomNavig
 @Composable
 fun MoreScreen(badgeViewModel: BadgeViewModel) {
     val context = LocalContext.current
-    badgeViewModel.updateBadge("More",152)
-    Box (
-        modifier = Modifier.fillMaxSize()
+    badgeViewModel.updateBadge("More", 152)
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
             .background(color = Color.Blue)
     )
     {
 
         LazyColumn(
             modifier = Modifier
-                .background(color = colorResource(id = R.color.white))
+                .background(color = MaterialTheme.colorScheme.onPrimaryContainer)
+                .padding(bottom = 80.dp)
         ) {
 
             items(20) { index ->
                 Card(
                     colors = CardDefaults.cardColors(
-                        colorResource(id = R.color.white)
+                        MaterialTheme.colorScheme.primary
                     ),
                     border = BorderStroke(1.dp, color = Color.Blue),
                     modifier = Modifier
@@ -108,9 +110,6 @@ fun MoreScreen(badgeViewModel: BadgeViewModel) {
             }
 
         }
-
-
-
     }
 
 }
