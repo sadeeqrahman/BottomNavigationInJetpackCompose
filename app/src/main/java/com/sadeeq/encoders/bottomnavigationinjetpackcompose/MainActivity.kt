@@ -25,8 +25,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sadeeq.encoders.bottomnavigationinjetpackcompose.screens.AlertsScreen
 import com.sadeeq.encoders.bottomnavigationinjetpackcompose.screens.HomeScreen
 import com.sadeeq.encoders.bottomnavigationinjetpackcompose.screens.MoreScreen
+import com.sadeeq.encoders.bottomnavigationinjetpackcompose.screens.SettingsScreen
 import com.sadeeq.encoders.bottomnavigationinjetpackcompose.ui.theme.BottomNavigationInJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -59,17 +61,13 @@ class MainActivity : ComponentActivity() {
                     Scaffold(bottomBar = { TabView(tabBarItems, navController, badgeViewModel) }) {
                         NavHost(navController = navController, startDestination = homeTab.title) {
                             composable(homeTab.title) {
-                                Text(homeTab.title)
-                                badgeViewModel.updateBadge("Alerts",1)
-                                badgeViewModel.updateBadge("Settings",2)
-                                badgeViewModel.updateBadge("Home",3)
-                                badgeViewModel.updateBadge("More",4)
+                                HomeScreen(badgeViewModel = badgeViewModel)
                             }
                             composable(alertsTab.title) {
-                                HomeScreen(badgeViewModel)
+                                AlertsScreen(badgeViewModel)
                             }
                             composable(settingsTab.title) {
-                                Text(settingsTab.title)
+                                SettingsScreen(badgeViewModel = badgeViewModel)
                             }
                             composable(moreTab.title) {
                                 MoreScreen(badgeViewModel)

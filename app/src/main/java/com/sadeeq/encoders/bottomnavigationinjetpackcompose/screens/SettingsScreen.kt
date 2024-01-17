@@ -38,9 +38,9 @@ import com.sadeeq.encoders.bottomnavigationinjetpackcompose.ui.theme.BottomNavig
 
 
 @Composable
-fun HomeScreen(badgeViewModel: BadgeViewModel) {
+fun SettingsScreen(badgeViewModel: BadgeViewModel) {
     val context = LocalContext.current
-    badgeViewModel.updateBadge("Home",14)
+    badgeViewModel.updateBadge("Settings",15)
     Card(
         colors = CardDefaults.cardColors(
             colorResource(id = R.color.white)
@@ -93,12 +93,3 @@ fun HomeScreen(badgeViewModel: BadgeViewModel) {
 
 }
 
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview2() {
-    BottomNavigationInJetpackComposeTheme {
-
-    }
-}

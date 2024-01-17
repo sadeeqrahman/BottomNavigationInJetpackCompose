@@ -30,7 +30,7 @@ fun TabView(
 
     NavigationBar(
         contentColor = Color.Red,
-        containerColor = Color.Transparent,
+        containerColor = Color.White,
         tonalElevation = 10.dp,
         modifier = Modifier
             .border(
